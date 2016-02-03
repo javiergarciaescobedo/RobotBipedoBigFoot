@@ -14,7 +14,10 @@ class JgBigFootRobot
   public:
     void init(int pinFootRight, int pinFootLeft, int pinHipRight, int pinHipLeft);
     void calibrate(int degFootRight, int degFootLeft, int degHipRight, int degHipLeft);
-    void step();
+    void stepFirst();
+    void stepLeft();
+    void stepRight();
+    void stepLast();
   private:
     void animateServos(float offsetFootRight, float offsetHipRight, float offsetFootLeft, float offsetHipLeft);
     void animateServo(Servo servo, float startDegree, float offsetAngle, int percent);

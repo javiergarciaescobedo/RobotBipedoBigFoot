@@ -36,14 +36,27 @@ void JgBigFootRobot::calibrate(int degFootRight, int degHipRight, int degFootLef
   _degHipLeft = degHipLeft;
 }
 
-void JgBigFootRobot::step() {
-  animateServos(0, 40, 0, 30);
-  animateServos(20, 0, 20, 0);  
-  animateServos(20, -40, 0, -30);  
-  //animateServos(0, 0, 0, 0);  // Bueno pero al revés
-  //animateServos(40, 0, -20, 20);  // Bueno pero al revés
-  //animateServos(0, 40, 20, 0);
+void JgBigFootRobot::stepFirst() {
+  animateServos(20, 0, 40, 0);
+  animateServos(20, -30, 0, -30);
+  animateServos(-40, 0, -40, 0);
 }
+
+void JgBigFootRobot::stepLeft() {
+  animateServos(-40, 30, -40, 30);
+  animateServos(40, 30, 40, 30);
+}
+
+void JgBigFootRobot::stepRight() {
+  animateServos(40, -30, 40, -30);
+  animateServos(-40, -30, -40, -30);
+}
+
+void JgBigFootRobot::stepLast() {
+  animateServos(-40, 30, -40, 30);
+  animateServos(40, 0, 40, 0);
+}
+
 
 void JgBigFootRobot::animateServos(float offsetFootRight, float offsetHipRight, float offsetFootLeft, float offsetHipLeft) {
   for(int i=0; i<100; i++) {
@@ -51,7 +64,7 @@ void JgBigFootRobot::animateServos(float offsetFootRight, float offsetHipRight, 
     animateServo(servoHipRight, _degHipRight, offsetHipRight, i);
     animateServo(servoFootLeft, _degFootLeft, offsetFootLeft, i);
     animateServo(servoHipLeft, _degHipLeft, offsetHipLeft, i);
-    delay(10);
+    delay(5);
   }  
   _degFootRight += offsetFootRight;
   _degHipRight += offsetHipRight;
