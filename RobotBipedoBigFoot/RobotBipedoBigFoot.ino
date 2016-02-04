@@ -4,11 +4,11 @@ JgBigFootRobot jgBigFootRobot;
 
 int stepCounter;
 boolean walking = true;
-const int STEPS = 2;
+const int STEPS = 5;
 
 void setup() {
   jgBigFootRobot.init(9, 11, 10, 12);
-  jgBigFootRobot.calibrate(100, 100, 85, 90);
+  jgBigFootRobot.calibrate(100, 110, 85, 90);
   jgBigFootRobot.stepFirst();
 }
 
