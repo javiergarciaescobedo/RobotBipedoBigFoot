@@ -12,14 +12,16 @@
 class JgBigFootRobot
 {
   public:
-    void init(int pinFootRight, int pinFootLeft, int pinHipRight, int pinHipLeft);
-    void calibrate(int degFootRight, int degFootLeft, int degHipRight, int degHipLeft);
-    void stepFirst();
+    void init(int pinFootRight, int pinFootLeft, int pinHipRight, int pinHipLeft, int pinEyes);
+    void calibrate(int degFootRight, int degFootLeft, int degHipRight, int degHipLeft, int degEyes);
+    void stepFirstLeft();
     void stepLeft();
     void stepRight();
-    void stepLast();
+    void stepLastRight();
+    void turnInPlace();
   private:
-    void animateServos(float offsetFootRight, float offsetHipRight, float offsetFootLeft, float offsetHipLeft);
+    void animateServos(float offsetFootRight, float offsetHipRight, float offsetFootLeft, 
+          float offsetHipLeft, int loopIncrement, int loopDelay);
     void animateServo(Servo servo, float startDegree, float offsetAngle, int percent);
 };
 
