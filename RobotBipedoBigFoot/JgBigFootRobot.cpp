@@ -21,9 +21,9 @@ float _degHipLeft;    // Current angle for left hip
 float _degEyes;       // Current angle for eyes
 
 const int TUMBLE = 30;  // Tumble right
-const int TURN = 25;    // Trun Right
-const int DELAY = 10;
-const int SPEED = 2;
+const int TURN = 25;    // Turn Right
+const int DELAY = 20;
+const int SPEED = 5;
 
 /* indicate pin numbers for each servo */
 void JgBigFootRobot::init(int pinFootRight, int pinHipRight, int pinFootLeft, int pinHipLeft, int pinEyes) {
@@ -35,8 +35,9 @@ void JgBigFootRobot::init(int pinFootRight, int pinHipRight, int pinFootLeft, in
 }
 
 /* Starting angles for each servo 
-degHipRight:  increase = <-   decrease = ->
-degHipLeft:   increase = <-   decrease = ->
+ *  degFootRight: increase = clockwise
+ *  degHipRight:  increase = <-   decrease = ->
+ *  degHipLeft:   increase = <-   decrease = ->
 */
 void JgBigFootRobot::calibrate(int degFootRight, int degHipRight, int degFootLeft, int degHipLeft, int degEyes) {
   servoFootRight.write(degFootRight);
@@ -52,23 +53,39 @@ void JgBigFootRobot::calibrate(int degFootRight, int degHipRight, int degFootLef
 }
 
 void JgBigFootRobot::stepFirstLeft() {
-  animateServos(TUMBLE*0.75, -15, TUMBLE*0.75, 10, SPEED, DELAY);
-  animateServos(-TUMBLE*0.75, -10, -TUMBLE*0.75, -35, SPEED, DELAY);
+  animateServos(10, -10, 20, -10, SPEED, DELAY);
+  animateServos(-10, -10, -20, -10, SPEED, DELAY);
+//  animateServos(10, -10, 20, -10, SPEED*2, 500);
+//  animateServos(10, -10, 0, -10, SPEED, 500);
+//  animateServos(-10, -10, -25, -10, SPEED, 500);
+//  animateServos(-15, 0, 0, 0, SPEED, 500);
 }
 
 void JgBigFootRobot::stepRight() {
-  animateServos(-TUMBLE, TURN, -TUMBLE, TURN, SPEED, DELAY);
-  animateServos(TUMBLE, TURN, TUMBLE, TURN, SPEED, DELAY);
+  animateServos(-20, 20, -20, 20, SPEED, DELAY);
+  animateServos(20, 20, 20, 20, SPEED, DELAY);
+
+//  animateServos(-20, 30, -20, 30, SPEED, DELAY);
+//  animateServos(10, 30, 35, 30, SPEED, DELAY/2);
+//  animateServos(25, 0, 0, 0, SPEED, DELAY/2);
 }
 
 void JgBigFootRobot::stepLeft() {
-  animateServos(TUMBLE, -TURN, TUMBLE, -TURN, SPEED, DELAY);
-  animateServos(-TUMBLE, -TURN, -TUMBLE, -TURN, SPEED, DELAY);
+  animateServos(20, -20, 20, -20, SPEED, DELAY);
+  animateServos(-20, -20, -20, -20, SPEED, DELAY);
+
+//  animateServos(20, -30, 20, -30, SPEED, 500);
+//  animateServos(-35, -30, -10, -30, SPEED, 500);
+//  animateServos(0, 0, -25, 0, SPEED, 500);
+//  animateServos(TUMBLE, -TURN, TUMBLE, -TURN, SPEED, DELAY);
+//  animateServos(-TUMBLE, -TURN, -TUMBLE, -TURN, SPEED, DELAY);
 }
 
 void JgBigFootRobot::stepLastRight() {
-  animateServos(-TUMBLE, TURN, -TUMBLE, TURN, SPEED, DELAY);
-  animateServos(TUMBLE, 0, TUMBLE, 0, SPEED, DELAY);
+  animateServos(-20, 20, -20, 20, SPEED, DELAY);
+  animateServos(20, 0, 20, 0, SPEED, DELAY);
+//  animateServos(-TUMBLE, TURN, -TUMBLE, TURN, SPEED, DELAY);
+//  animateServos(TUMBLE, 0, TUMBLE, 0, SPEED, DELAY);
 }
 
 void JgBigFootRobot::turnInPlace() {
