@@ -19,6 +19,7 @@ class JgBigFootRobot
     void stepRight();
     void stepLastRight();
     void turnInPlace();
+    void animateEyes();
   private:
     void animateServos(float offsetFootRight, float offsetHipRight, float offsetFootLeft, 
           float offsetHipLeft, int loopIncrement, int loopDelay);
