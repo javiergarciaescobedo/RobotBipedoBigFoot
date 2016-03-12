@@ -128,9 +128,11 @@ void JgBigFootRobot::animateServo(Servo servo, float startDegree, float offsetAn
 
 void JgBigFootRobot::animateEyes() {
   servoEyes.write(_degEyes - 20);
-  delay(500);
+  delay(300);
+  servoEyes.write(_degEyes);
+  delay(300);
   servoEyes.write(_degEyes + 20);
-  delay(500);
+  delay(300);
   servoEyes.write(_degEyes);
 }
 
